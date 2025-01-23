@@ -1,0 +1,25 @@
+{
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js",
+    "migrate": "knex migrate:latest",
+    "seed": "knex seed:run"
+  },
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "bottleneck": "^2.19.5",
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "json2csv": "^5.0.7",
+    "jsonwebtoken": "^8.5.1",
+    "knex": "^0.95.11",
+    "openai": "^4.80.0",
+    "papaparse": "^5.5.1",
+    "sqlite3": "^5.0.2",
+    "winston": "^3.17.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22"
+  }
+}

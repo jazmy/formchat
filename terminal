@@ -1,0 +1,71 @@
+mkdir chat-form-builder
+cd chat-form-builder
+mkdir backend frontend
+cd backend
+rm -rf node_modules package-lock.json
+npm init -y
+npm install express sqlite3 knex bcrypt jsonwebtoken cors dotenv json2csv openai
+npm install nodemon --save-dev
+npm install
+mkdir -p data
+npx knex migrate:latest
+npx knex seed:run --specific=01_admin_user.js
+cd ../frontend
+rm -rf node_modules package-lock.json
+npm install
+npx create-react-app .
+npm install @mui/material @mui/icons-material @emotion/react @emotion/styled
+npm install react-router-dom axios jwt-decode 
+npm install react-beautiful-dnd 
+mkdir public
+npm run dev
+
+# Terminal 1 (backend)
+cd backend
+npm run dev
+
+# Terminal 2 (frontend)
+cd frontend
+npm start 
+
+cd backend
+rm -f data/chat_forms.sqlite3
+rm -rf migrations/*
+npx knex migrate:make create_tables
+# Copy the above migration code into the newly created file
+npx knex migrate:latest --debug
+sqlite3 data/chat_forms.sqlite3 ".tables"
+
+cd frontend
+npm install --save-dev @babel/plugin-proposal-private-property-in-object 
+
+npm install bottleneck 
+
+cd backend
+npm install bottleneck 
+
+sqlite3 data/chat_forms.sqlite3 ".tables" 
+
+cd backend
+npx knex migrate:make add_validation_criteria_to_prompts 
+npx knex migrate:latest 
+
+sqlite3 data/chat_forms.sqlite3 ".schema prompts" 
+
+sqlite3 data/chat_forms.sqlite3 "SELECT * FROM knex_migrations;" 
+
+sqlite3 data/chat_forms.sqlite3 ".schema forms"
+sqlite3 data/chat_forms.sqlite3 ".schema prompts" 
+
+# Test the base API endpoint
+curl http://localhost:3001/api/forms/test
+
+# Test getting all forms
+curl http://localhost:3001/api/forms
+
+# Test creating a form
+curl -X POST http://localhost:3001/api/forms \
+  -H "Content-Type: application/json" \
+  -d '{"title":"Test Form","description":"Test Description","prompts":[]}' 
+
+touch README.md 
