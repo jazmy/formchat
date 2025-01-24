@@ -2,6 +2,8 @@
 
 🤖 Transform your boring forms into engaging conversations! FormChat is an AI-powered form builder that turns traditional form-filling into natural, dynamic chat experiences. Say goodbye to rigid form fields and hello to conversational data collection that users actually enjoy.
 
+For more solutions check out my GenAI Secret Sauce site: https://genaisecretsauce.com 
+
 ## ✨ Why FormChat?
 
 - **Natural Conversations**: Instead of cold, impersonal forms, users engage in friendly chats that feel natural and engaging
@@ -67,6 +69,10 @@
 - npm v6 or higher
 - SQLite3
 - OpenAI API key
+
+> **⚠️ NOTE**  
+> As a proof-of-concept, FormChat currently utilizes a SQLite database. While functional, further development would be needed to scale for production environments. This project serves as a starting point, a working example of the transformative potential of conversational feedback.
+
 
 ## Screenshots
 
